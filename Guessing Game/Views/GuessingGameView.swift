@@ -23,7 +23,6 @@ struct GuessingGameView: View {
     
     // MARK: Computed properties
     
-    
     var body: some View {
         
         VStack {
@@ -38,6 +37,7 @@ struct GuessingGameView: View {
                    maximumValueLabel: {Text("100")})
             
             Text("\(playerGuess.formatted(.number.precision(.fractionLength(1))))")
+            
             // Show the user's input to them using a Text view
             // ADD MISSING CODE HERE
             
@@ -45,11 +45,21 @@ struct GuessingGameView: View {
             Button(action: {
                 
                 // Convert the user's input, which is a Double, into an Int
-//                let currentGuessAsInteger = Int(currentGuess)
-                
+                let currentGuessAsInteger = Int(playerGuess)
+
                 // Compare the user's guess to the target and give appropriate feedback
                 // ADD MISSING CODE HERE
                 
+                if currentGuessAsInteger < target {
+                    feedback = "Guess higher"
+                } else {
+                    feedback = "Guess lower"
+                }
+                
+                if currentGuessAsInteger == target {
+                    feedback = "You got it!"
+                }
+                    
             }, label: {
                 Text("Submit Guess")
             })
