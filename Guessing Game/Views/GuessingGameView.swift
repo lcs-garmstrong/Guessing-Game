@@ -13,7 +13,7 @@ struct GuessingGameView: View {
     
     // The input collected from the Slider
     // ADD MISSING CODE HERE
-    @State var playerGuess: Double = 1
+    @State var playerGuess = ""
     
     // The secret target that the user is trying to guess
     @State var target = Int.random(in: 0...100)
@@ -22,30 +22,32 @@ struct GuessingGameView: View {
     @State var feedback = ""
     
     // MARK: Computed properties
-    
+
     var body: some View {
         
         VStack {
             
             // Collect the user's input using a Slider
             // ADD MISSING CODE HERE
-            Slider(value: $playerGuess,
-                   in: 0...100,
-                   step: 1.0,
-                   label: {Text("Guess")},
-                   minimumValueLabel: {Text("0")},
-                   maximumValueLabel: {Text("100")})
-            
-            Text("\(playerGuess.formatted(.number.precision(.fractionLength(1))))")
+//            Slider(value: $playerGuess,
+//                   in: 0...100,
+//                   step: 1.0,
+//                   label: {Text("Guess")},
+//                   minimumValueLabel: {Text("0")},
+//                   maximumValueLabel: {Text("100")})
+//
+//            Text("\(playerGuess.formatted(.number.precision(.fractionLength(1))))")
             
             // Show the user's input to them using a Text view
             // ADD MISSING CODE HERE
+            
+            TextField("Enter guess...", text: $playerGuess)
             
             // Let the user check to see if their current guess is correct
             Button(action: {
                 
                 // Convert the user's input, which is a Double, into an Int
-                let currentGuessAsInteger = Int(playerGuess)
+                let currentGuessAsInteger = Int(playerGuess)!
 
                 // Compare the user's guess to the target and give appropriate feedback
                 // ADD MISSING CODE HERE
